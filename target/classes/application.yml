@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: market-data-aggregator
+
+  profiles:
+    active: prod
+
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      group-id: market-aggregator-group
+      auto-offset-reset: latest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/market_db}
+    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+      timeout: 2000ms
+
+server:
+  port: 8080
+
+market:
+  kafka:
+    topic: market-ticks
+  binance:
+    websocket-url: wss://stream.binance.com:9443/ws/btcusdt@ticker
+    symbol: BTCUSDT
+  metrics:
+    window-minutes: 5
+  alert:
+    enabled: true
+    price-pct-change-threshold: 2.0
+    webhook-url: http://localhost:8080/api/v1/webhook/alert-receiver

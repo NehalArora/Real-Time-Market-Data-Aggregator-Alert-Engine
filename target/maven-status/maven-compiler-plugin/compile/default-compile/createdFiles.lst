@@ -1,0 +1,15 @@
+com\market\aggregator\entity\RollingMetricEntity.class
+com\market\aggregator\service\BinanceWebSocketIngestionService.class
+com\market\aggregator\repository\RollingMetricRepository.class
+com\market\aggregator\model\MarketTick.class
+com\market\aggregator\controller\WebhookDemoController.class
+com\market\aggregator\entity\TickEntity.class
+com\market\aggregator\service\AlertEngineService.class
+com\market\aggregator\repository\TickRepository.class
+com\market\aggregator\MarketDataAggregatorApplication.class
+com\market\aggregator\service\RedisMarketDataCache.class
+com\market\aggregator\service\RollingMetricCalculator.class
+com\market\aggregator\controller\MarketDataController.class
+com\market\aggregator\service\KafkaProducerService.class
+com\market\aggregator\model\RollingMetric.class
+com\market\aggregator\service\KafkaTickConsumerService.class

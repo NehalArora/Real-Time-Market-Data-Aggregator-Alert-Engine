@@ -1,0 +1,3 @@
+com\market\aggregator\service\AlertEngineServiceTest.class
+com\market\aggregator\service\RedisMarketDataCacheTest.class
+com\market\aggregator\service\RollingMetricCalculatorTest.class
